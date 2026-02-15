@@ -17,4 +17,4 @@ jobs:
         run: |
           docker run -d -p 8080:8080 --name hole.it tournament-app
           sleep 5
-          docker exec test-container whoami
+          docker exec hole.it whoami
