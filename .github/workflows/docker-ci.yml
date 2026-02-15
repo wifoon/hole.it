@@ -1,0 +1,20 @@
+name: Docker Build Test
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t tournament-app .
+
+      - name: Test container
+        run: |
+          docker run -d -p 8080:8080 --name hole.it tournament-app
+          sleep 5
+          docker exec test-container whoami
